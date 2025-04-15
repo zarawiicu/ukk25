@@ -4,6 +4,7 @@
 <div class="container">
     <h1>Data Barang</h1>
     <a href="{{ route('barangs.create') }}" class="btn btn-primary mb-3">Tambah Barang</a>
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">Kembali</a>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>

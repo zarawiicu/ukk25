@@ -52,25 +52,33 @@ class AuthController extends Controller
 
     // Metode untuk menangani login
     public function login(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+{
+    // Validasi input
+    $request->validate([
+        'email'    => 'required|string|email',
+        'password' => 'required|string',
+    ]);
 
-        // Coba login
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Jika login berhasil, redirect ke halaman yang diinginkan
-            return redirect()->intended('/home'); // Ganti dengan rute yang sesuai
+    // Coba login
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        // Mendapatkan pengguna yang terautentikasi
+        $user = Auth::user();
+
+        // Redirect sesuai dengan peran pengguna
+        if ($user->role == 'admin') { 
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role == 'owner') { 
+            return redirect()->route('owner.dashboard');
+        } else {
+            return redirect()->route('user.dashboard');
         }
-
-        // Jika login gagal, redirect kembali dengan pesan error
-        return redirect()->back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->withInput();
     }
 
+    // Jika login gagal, redirect kembali dengan pesan error
+    return redirect()->back()->withErrors([
+        'email' => 'Email atau password salah.',
+    ])->withInput();
+}
     // Metode untuk logout
     public function logout()
     {

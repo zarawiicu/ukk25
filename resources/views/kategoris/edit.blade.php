@@ -7,7 +7,6 @@
 
 
 <div class="container">
-    <h1>Edit Kategori</h1>
 
     <form action="{{ route('kategoris.update', $kategori) }}" method="POST">
         @csrf

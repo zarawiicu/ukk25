@@ -7,7 +7,6 @@
 
 
 <div class="container">
-    <h1>Tambah Kategori</h1>
 
     <form action="{{ route('kategoris.store') }}" method="POST">
         @csrf

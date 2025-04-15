@@ -4,7 +4,7 @@
 <div class="container">
     <h1>Data Kategori</h1>
     <a href="{{ route('kategoris.create') }}" class="btn btn-primary mb-3">Tambah Kategori</a>
-
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">Kembali</a>
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif

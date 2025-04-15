@@ -6,7 +6,6 @@
     <h1 class="text-2xl font-bold mb-6">{{ isset($barang) ? 'Edit' : 'Tambah' }} Barang</h1>
 
 <div class="container">
-    <h1>Edit Barang</h1>
 
     <form action="{{ route('barangs.update', $barang) }}" method="POST">
         @csrf
